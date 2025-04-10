@@ -2,6 +2,9 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./db/index.js";
 import userRouter from "./routes/user.route.js";
+import courseRouter from "./routes/course.route.js";
+import purchaseRouter from "./routes/purchase.route.js";
+import progressRouter from "./routes/progress.route.js";
 
 dotenv.config({
   path: "./.env",
@@ -13,7 +16,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/users",userRouter)
-app.use("api/v1/")
+app.use("api/v1/courses",courseRouter)
+app.use("api/v1/progress",progressRouter)
+app.use("api/v1/payment",purchaseRouter)
 
 
 

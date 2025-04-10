@@ -8,12 +8,17 @@ const lectureSchema = new mongoose.Schema(
     },
     videoUrl: {
       type: String,
+      required:true
     },
     publicId: {
       type: String,
     },
     isPreviewFree: {
       type: String,
+    },
+    courseId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Course",
     },
   },
   { timestamps: true }

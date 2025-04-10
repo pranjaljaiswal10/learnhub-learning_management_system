@@ -10,6 +10,9 @@ cloudinary.config({
 
 const uploadOnCoudinary = async (localFilePath) => {
   try {
+    if(!localFilePath){
+      return null;
+    }
     const response=await cloudinary.uploader.upload(localFilePath,{
         resource_type:"auto"
     })
@@ -29,4 +32,14 @@ const deleteFromCloudinary=async (public_id) => {
     }
 }
 
-export {uploadOnCoudinary,deleteFromCloudinary}
+const deleteVideoFromCloudinary=async (public_id) => {
+  try {
+   await cloudinary.uploader.destroy(public_id,{resource_type:"video"}) 
+  } catch (error) {
+   console.log(error)    
+  }
+}
+
+
+
+export {uploadOnCoudinary,deleteFromCloudinary,deleteVideoFromCloudinary}

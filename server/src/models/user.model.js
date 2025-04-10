@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema(
       enum: ["instructor", "student"],
       default: "student",
     },
-    courseEnrolled: {
+    enrolledCourses: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Course",
     },
@@ -39,6 +39,12 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+userSchema.pre("save", async function (next) {
+  const user = this;
+  if (user.isModified("password")) return next();
+  user.password = bcrypt.hash(user.password, 10);
+});
 
 userSchema.methods.getJwt = function () {
   const user = this;

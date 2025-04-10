@@ -4,10 +4,10 @@ const lectureProgressSchema = mongoose.Schema({
   lectureId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Lecture",
-    viewed: {
-      type: Boolean,
-      default: false,
-    },
+  },
+  viewed: {
+    type: Boolean,
+    default: false,
   },
 });
 

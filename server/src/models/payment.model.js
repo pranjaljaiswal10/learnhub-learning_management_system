@@ -4,14 +4,17 @@ const paymentSchema = new mongoose.Schema(
   {
     courseId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref:"Course",
+      ref: "Course",
       required: true,
     },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref:"User",
-      required:true
-
+      ref: "User",
+      required: true,
+    },
+    orderId: {
+      type: String,
+      required: true,
     },
     amount: {
       type: Number,
@@ -21,6 +24,12 @@ const paymentSchema = new mongoose.Schema(
       type: String,
       enum: ["pending", "success", "failed"],
       default: "pending",
+    },
+    receipt: {
+      type: String,
+    },
+    notes: {
+      type: String,
     },
     paymentId: {
       type: String,
