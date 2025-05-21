@@ -1,7 +1,7 @@
 import {
   deleteVideoFromCloudinary,
   uploadOnCoudinary,
-} from "../../utils/cloudinary.js";
+} from "../utils/cloudinary.js";
 import { Course } from "../models/course.model.js";
 import { Lecture } from "../models/lecture.model.js";
 
@@ -21,7 +21,7 @@ const createLecture = async (req, res) => {
   }
 };
 
-const getCourseLecture = async (req, res) => {
+const getLecture = async (req, res) => {
   try {
     const { courseId } = req.params;
     const allLecture = await Course.findById(courseId).populate("lectureId");
@@ -107,7 +107,7 @@ const removeLecture = async (req, res) => {
 export {
   createLecture,
   editLecture,
-  getCourseLecture,
+  getLecture,
   getLectureById,
   removeLecture,
 };

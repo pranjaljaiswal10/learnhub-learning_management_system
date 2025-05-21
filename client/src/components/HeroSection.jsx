@@ -27,10 +27,10 @@ const HeroSection = () => {
           onClick={handleClick}
           className="bg-blue-600 dark:bg-blue-700 text-white px-6 py-3 rounded-r-full hover:bg-blue-700 dark:hover:bg-blue-800"
         >
-          Button
+        Search
         </Button>
       </div>
-      <Button></Button>
+      <Button>Explore Courses</Button>
     </section>
   );
 };

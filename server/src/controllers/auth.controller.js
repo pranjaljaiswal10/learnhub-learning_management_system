@@ -3,7 +3,7 @@ import { User } from "../models/user.model.js";
 import {
   deleteFromCloudinary,
   uploadOnCoudinary,
-} from "../../utils/cloudinary.js";
+} from "../utils/cloudinary.js";
 
 const registerUser = async (req, res) => {
   try {
@@ -21,16 +21,9 @@ const registerUser = async (req, res) => {
     }
     const hashPassword = await bcrypt.hash(password, 10);
     const user = await User.create({ fullname, email, password: hashPassword });
-    const token = await user.getJwt();
-    const option = {
-      httpOnly: true,
-      secure: true,
-    };
-    res
-      .status(201)
-      .json({ success: true, message: "User registered succesfully" })
-      .cookie("token", token, option);
+  
   } catch (error) {
+    console.log(error)
     res.status(500).json({
       success: false,
       message: "User registration failed,please try again.",
@@ -87,6 +80,7 @@ const getUserProfile = async (req, res) => {
     }
     res.status(200).json({ success: true, data: user });
   } catch (error) {
+    console.log(error)
     res.status(500).json({
       success: false,
       message: "Something went wrong while fetching profile data",

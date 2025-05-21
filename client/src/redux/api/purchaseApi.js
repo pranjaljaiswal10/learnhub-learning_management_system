@@ -1,5 +1,5 @@
 import { BASE_URL } from "@/utils/constant";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 
 export const purchaseApi=createApi({

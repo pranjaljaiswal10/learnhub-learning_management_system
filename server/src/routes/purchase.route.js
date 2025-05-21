@@ -10,6 +10,6 @@ const purchaseRouter = Router();
 
 purchaseRouter.post("/create", authVerify, createOrderId);
 purchaseRouter.post("/webhook", authVerify, paymentWebhook);
-purchaseRouter.post("verify", authVerify, verifyPayment);
+purchaseRouter.post("/verify", authVerify, verifyPayment);
 
 export default purchaseRouter;

@@ -27,10 +27,10 @@ const courseSchema = new mongoose.Schema(
     thumbnail: {
       type: String,
     },
-    enrolledStudents: {
+    enrolledStudents: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-    },lecture:[{
+    }],lecture:[{
       type:mongoose.Schema.Types.ObjectId,
       ref:"Lecture"
     }],

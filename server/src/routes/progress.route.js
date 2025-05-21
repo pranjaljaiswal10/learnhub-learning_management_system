@@ -11,7 +11,7 @@ const progressRouter = Router();
 
 progressRouter.get("/:courseId", authVerify, getCourseProgress);
 progressRouter.put("/:courseId", authVerify, updateLectureProgress);
-progressRouter.patch("/:courseId", authVerify, markAsCompleted);
-progressRouter.patch("/:courseId", authVerify, markAsIncompleted);
+progressRouter.patch("/:courseId/complete", authVerify, markAsCompleted);
+progressRouter.patch("/:courseId/incomplete", authVerify, markAsIncompleted);
 
 export default progressRouter;

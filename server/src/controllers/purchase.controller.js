@@ -1,4 +1,4 @@
-import razorpay from "../../utils/razorpay.js";
+import razorpay from "../utils/razorpay.js";
 import { Payment } from "../models/payment.model.js";
 import {
   validatePaymentVerification,
@@ -80,4 +80,12 @@ const verifyPayment = async (req, res) => {
   }
 };
 
-export { createOrderId, paymentWebhook, verifyPayment };
+const purchaseCourse=async (req,res) => {
+  try {
+    
+  } catch (error) {
+    
+  }
+}
+
+export { createOrderId, paymentWebhook, verifyPayment,purchaseCourse };

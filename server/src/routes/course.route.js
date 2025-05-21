@@ -4,19 +4,18 @@ import {
   createCourses,
   editCourse,
   getCourseById,
+  getCreatorCourses,
+  getPublishedCourses,
 } from "../controllers/course.controller.js";
-import {
-  createLecture,
-  editLecture,
-  getCourseLecture,
-  getLectureById,
-  removeLecture,
-} from "../controllers/lecture.controller.js";
+
 import { upload } from "../middlewares/multer.middleware.js";
+import lectureRouter from "./lecture.route.js";
 
 const courseRouter = Router();
 
 courseRouter.post("/", authVerify, createCourses);
+courseRouter.get("/",authVerify,getCreatorCourses)
+courseRouter.get("/publish",authVerify,getPublishedCourses)
 courseRouter.put(
   "/:courseId",
   authVerify,
@@ -24,10 +23,6 @@ courseRouter.put(
   editCourse
 );
 courseRouter.get("/:courseId", authVerify, getCourseById);
-courseRouter.post("/:courseId/lecture",upload.array, authVerify, createLecture);
-courseRouter.get("/:courseId/lecture", authVerify, getCourseLecture);
-courseRouter.put("/:courseId/lectures/:lecureId", authVerify, editLecture);
-courseRouter.get("/:courseId/lecture/:lecureId", authVerify, getLectureById);
-courseRouter.delete("/:courseId/lecture/:lectureId", authVerify, removeLecture);
+courseRouter.use("/:courseId/lecture",lectureRouter)
 
 export default courseRouter;

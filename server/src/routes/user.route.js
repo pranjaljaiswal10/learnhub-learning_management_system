@@ -9,7 +9,8 @@ import {
 import { upload } from "../middlewares/multer.middleware.js";
 import authVerify from "../middlewares/auth.middleware.js";
 import { userLoginValidator } from "../middlewares/validate.middleware.js";
-import { validate } from "../../utils/validator.js";
+import { validate } from "../utils/validator.js";
+
 
 const userRouter = Router();
 
